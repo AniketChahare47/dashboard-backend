@@ -9,12 +9,12 @@ connectToMongo();
 const app = express();
 
 // ✅ Dynamic Port for Render
-const PORT = process.env.PORT || https://dashboard-backend-trcc.onrender.com;
+const PORT = process.env.PORT || 5000;
 
 // ✅ Middleware
 app.use(express.json());
 
-// ✅ Allow Frontend Requests
+// ✅ CORS Setup
 app.use(
   cors({
     origin: [
