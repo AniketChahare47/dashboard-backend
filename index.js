@@ -1,21 +1,40 @@
-const connectToMongo = require('./db'); // Import MongoDB connection
-const express = require('express');
-const cors = require('cors');
+require("dotenv").config();
 
-connectToMongo(); // Connect to MongoDB
+const connectToMongo = require("./db");
+const express = require("express");
+const cors = require("cors");
+
+connectToMongo();
 
 const app = express();
-const port = 5000; // Backend port
 
-// Middleware
+// ✅ Dynamic Port for Render
+const PORT = process.env.PORT || 5000;
+
+// ✅ Middleware
 app.use(express.json());
-app.use(cors({ origin: "http://localhost:3000" })); // Allow React frontend
 
-// Routes
-app.use('/api/auth', require('./routes/auth'));   // Auth routes
-app.use('/api/notes', require('./routes/notes')); // Notes routes
+// ✅ Allow Frontend Requests
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",
+      "https://dashboard-frontend-95wx.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
-// Start server
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
+// ✅ Routes
+app.use("/api/auth", require("./routes/auth"));
+app.use("/api/notes", require("./routes/notes"));
+
+// ✅ Default Route
+app.get("/", (req, res) => {
+  res.send("Backend Running Successfully 🚀");
+});
+
+// ✅ Start Server
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
