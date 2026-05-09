@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
-      "http://localhost:3000",
+      "http://https://dashboard-backend-trcc.onrender.com:3000",
       "https://dashboard-frontend-95wx.vercel.app",
     ],
     credentials: true,

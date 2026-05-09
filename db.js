@@ -1,5 +1,5 @@
 // const mongoose = require ('mongoose');
-// const mongoURI = "mongodb://localhost:27017/ebook"
+// const mongoURI = "mongodb://https://dashboard-backend-trcc.onrender.com:27017/ebook"
 // const connectToMongo = async() => {
 //   try{
 //     mongoose.set('strictQuery',false)
@@ -16,7 +16,7 @@ const mongoose = require('mongoose');
 
 // MongoDB URI
 const mongoURI = "mongodb://127.0.0.1:27017/ebook"; 
-// 👆 127.0.0.1 safer hai than localhost
+// 👆 127.0.0.1 safer hai than https://dashboard-backend-trcc.onrender.com
 
 const connectToMongo = async () => {
   try {
