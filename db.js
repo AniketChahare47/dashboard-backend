@@ -11,21 +11,20 @@
 //   }
 // }
 // module.exports=connectToMongo;
+const mongoose = require("mongoose");
 
-const mongoose = require('mongoose');
-
-// MongoDB URI
-const mongoURI = "mongodb://127.0.0.1:27017/ebook"; 
-// 👆 127.0.0.1 safer hai than https://dashboard-backend-trcc.onrender.com
+const mongoURI = process.env.MONGO_URI;
 
 const connectToMongo = async () => {
   try {
-    mongoose.set('strictQuery', false); // optional
-    await mongoose.connect(mongoURI);   // no extra options needed in Mongoose v6+
+    mongoose.set("strictQuery", false);
+
+    await mongoose.connect(mongoURI);
+
     console.log("✅ Connected to MongoDB Successfully");
   } catch (error) {
     console.error("❌ Error connecting to MongoDB:", error.message);
-    process.exit(1); // exit if DB connection fails
+    process.exit(1);
   }
 };
 
