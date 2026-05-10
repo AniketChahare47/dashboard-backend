@@ -8,28 +8,20 @@ connectToMongo();
 
 const app = express();
 
-// ✅ Dynamic Port for Render
+// ✅ Dynamic Port
 const PORT = process.env.PORT || 5000;
 
 // ✅ Middleware
 app.use(express.json());
 
-// ✅ CORS Setup
-app.use(
-  cors({
-    origin: [
-      "http://https://dashboard-backend-trcc.onrender.com:3000",
-      "https://dashboard-frontend-95wx.vercel.app",
-    ],
-    credentials: true,
-  })
-);
+// ✅ CORS
+app.use(cors());
 
 // ✅ Routes
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/notes", require("./routes/notes"));
 
-// ✅ Default Route
+// ✅ Test Route
 app.get("/", (req, res) => {
   res.send("Backend Running Successfully 🚀");
 });
