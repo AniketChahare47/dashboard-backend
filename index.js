@@ -15,7 +15,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:3000",
-      "https://dashboard-frontend-bay-mu.vercel.app/"
+      "http://localhost:3001",
+      "https://dashboard-frontend-bay-mu.vercel.app"
     ],
     credentials: true,
   })
